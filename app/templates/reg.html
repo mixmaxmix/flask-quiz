@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Регистрация в Quizer
+{% endblock %}
+
+{% block styles%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock%}
+
+{% block body %}
+<div class="reg">
+    <div class="form-reg">
+        <h1 class="title">Регистрация в Quizer</h1>
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}
+            </p>
+            {{ form.username(size=32) }}
+            <p>
+                {{ form.email.label }}
+            </p>
+            {{ form.email(size=32) }}
+            <p>
+                {{ form.password.label }}
+            </p>
+            {{ form.password(size=32) }}
+            <p>
+                {{ form.password2.label }}
+            </p>
+            {{ form.password2(size=32) }}
+            <div class="form-btns-alt">
+                {{ form.submit() }}
+                <input id="submit" type="button" value="Я уже бывал тут" class="button_active" onclick="location.href='/login';" />
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
