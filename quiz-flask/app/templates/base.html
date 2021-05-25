@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/img/logo.svg">
+    <title>{% block title %}{% endblock %}</title>
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    {% if user and user.is_authenticated %}
+    {% else %}
+        <style>
+            nav {
+                display: none;
+            }
+        </style>
+    {% endif %} 
+    <nav>
+        <a class="nav-logo" href="/">
+            <img src="{{url_for('static', filename='img/logo.svg')}}" alt="">
+        </a>
+        <a class="nav-btns dashboard-btns" href="/dashboard">
+            <img src="{{url_for('static', filename='img/dashboard.svg')}}" alt="">
+        </a>
+        <a class="nav-btns profile-btns" href="/profile">
+            <img src="{{url_for('static', filename='img/profile.svg')}}" alt="">
+        </a>
+        <a class="nav-btns settings-btns" href="/settings">
+            <img src="{{url_for('static', filename='img/settings.svg')}}" alt="">
+        </a>
+    </nav>
+    {% block body %}{% endblock %}
+</body>
+</html>
