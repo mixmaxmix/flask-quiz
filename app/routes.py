@@ -1,9 +1,10 @@
 from wtforms import form
+from wtforms.widgets.core import Option
 from app import app, db
 from flask import Flask, render_template, url_for, request, redirect
 from werkzeug.urls import url_parse
 from app.models import User
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, Question, RegistrationForm, questions_list
 from flask_login import current_user, login_user, logout_user, login_required
 
 @app.route('/')
@@ -43,6 +44,25 @@ def login():
 @login_required
 def profile():
     return render_template("profile.html", user=current_user)
+
+@app.route('/quiz')
+@login_required
+def quiz():
+    return render_template("quiz.html", user=current_user, questions_list=questions_list)
+
+@app.route('/sumbitquiz', methods=['POST', 'GET'])
+def submit():
+    correct_count = 0
+    if form.validate_on_submit():
+        for question in questions_list:
+            question_id = str(question.q_id)
+            selected_option = request.form[question_id]
+            correct_option = question.get_correct_option()
+            if selected_option == correct_option:
+                correct_count = correct_count + 1
+
+        correct_count = str(correct_count)
+    return render_template("index.html")
 
 @app.route('/settings')
 @login_required

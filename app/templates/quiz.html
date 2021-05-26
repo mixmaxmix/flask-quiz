@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Прохождение теста - Quizer
+{% endblock %}
+
+{% block styles%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+{% endblock%}
+
+{% block body %}
+    <div class="quiz-container">
+            {% for question in questions_list %}
+                <h3>{{ question.question }}</h3>
+                <div class="radio-container">
+                    <input type="radio" name="{{question.q_id}}" value="{{question.option1}} required">{{question.option1}}
+                    <input type="radio" name="{{question.q_id}}" value="{{question.option2}} required">{{question.option2}}
+                    <input type="radio" name="{{question.q_id}}" value="{{question.option3}} required">{{question.option3}}
+                </div>
+            {% endfor %}
+
+            <form action="/sumbitquiz", method="post">
+                <br />
+                <input type="submit" name="submitform" value="Submit">
+            </form>
+        
+    </div>
+{% endblock %}
