@@ -1,0 +1,22 @@
+.quiz-container {
+    margin: 150px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.question-title {
+    margin-bottom: 20px;
+}
+
+.radio-label {
+    font-size: 18px;
+}

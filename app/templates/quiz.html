@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Прохождение теста - Quizer
+{% endblock %}
+
+{% block styles%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+{% endblock%}
+
+{% block body %}
+    <div class="quiz-container">
+
+            <form action="{{ url_for('submit', id=id) }}", method="post">
+                {% for question in questions_list %}
+                    <h2 class="question-title">{{ question.question }}</h2>
+                    <div id="{{question.q_id}}" name="{{question.q_id}}" class="radio-container">
+                        <div class="answer-container">
+                            <input type="radio" name="{{question.q_id}}" value="{{question.option1}}" required>
+                            <label class="radio-label">{{question.option1}}</label>
+                        </div>
+                        <div class="answer-container">
+                            <input type="radio" name="{{question.q_id}}" value="{{question.option2}}" required>
+                            <label class="radio-label">{{question.option2}}</label>
+                        </div>
+                        <div class="answer-container">
+                            <input type="radio" name="{{question.q_id}}" value="{{question.option3}}" required>
+                            <label class="radio-label">{{question.option3}}</label>
+                        </div>
+                        <div class="answer-container">
+                            <input type="radio" name="{{question.q_id}}" value="{{question.option4}}" required>
+                            <label class="radio-label">{{question.option4}}</label>
+                        </div>
+                    </div>
+                {% endfor %}
+                <br />
+                <input type="submit" name="submitform" value="Ответить">
+            </form>
+        
+    </div>
+{% endblock %}

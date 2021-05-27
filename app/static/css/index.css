@@ -57,20 +57,29 @@ main {
     transition: .2s;
 }
 
-.main-test-href:first-child {
-    margin: 0;
-}
-
 .main-test:hover {
     transform: translateY(-10px);
-    filter: drop-shadow(0 0 .5rem #ffffff8a);
+    filter: drop-shadow(0 0 .5rem #ffffff55);
 }
 
-.test-war {
-    background: linear-gradient(116.67deg, #8271E8 0%, rgba(130, 113, 232, 0.5) 100%), url(https://cdn24.img.ria.ru/images/96130/54/961305484_0:282:2509:1693_600x0_80_0_0_2bbfbeb8cb97b2c909c62b8e0c28c659.jpg);
+.main-test {
+    background: linear-gradient(116.67deg, #6349FF 0%, #6449ff59 100%) center center / cover;
 }
 
-.test-flask {
+.main-test {
+    background: linear-gradient(116.67deg, #21155869 0%, #6449ff59 100%) center center / cover;
+}
+
+
+
+/* .test-id-0 {
+}
+
+.test-id-1 {
+    background: linear-gradient(116.67deg, #ffa310 0%, #ffa4137a 100%), url(https://pythonist.ru/wp-content/uploads/2020/10/1_0g5zu7cnxdmt9pgbyutqlq.png);
+}
+
+.test-id-2 {
     background: linear-gradient(116.67deg, #ffa310 0%, #ffa4137a 100%), url(https://pythonist.ru/wp-content/uploads/2020/10/1_0g5zu7cnxdmt9pgbyutqlq.png);
 }
 
@@ -80,4 +89,4 @@ main {
 
 .test-gamid {
     background: linear-gradient(116.67deg, #3da713 0%, #3da7134f 100%), url(https://ithub.ru/vardata/cache/resized/modules/news/files/1/174/news_file_174_5fec49e02ce6d/W358_H466_O.jpg);
-}
+} */

@@ -37,44 +37,56 @@ Quizer - викторина для всех
     .dashboard-btns {
         opacity: 1;
     }
+
 </style>
 <main>
-    <h1 class="title main-title">Лучшие тесты для {{ user.username }}:</h1>
-    <div class="main-container">
-        <a href="/" class="main-test-href">
+    {% for categ in categs %}
+        <h1 class="title main-title">{{ categ['title'] }}:</h1>
+        <div class="main-container">
+            {% for quiz_id in categ['quizes'] %}
+                <a href="/quiz/{{ quiz_id }}" class="main-test-href">
+                    <div class="main-test test-id-{{ quiz_id }}" style="background:{{ quizes[quiz_id]['background'] }} center center / cover;">
+                        <h2 class="main-test-title">{{ quizes[quiz_id]['title'] }}</h2>
+                        <p class="main-test-subtitle">{{ quizes[quiz_id]['description'] }}</p>
+                    </div>
+                </a>
+            {% endfor %} 
+        </div>
+    {% endfor %}
+<!--         
+        <a href="/quiz" class="main-test-href">
             <div class="main-test test-war">
                 <h2 class="main-test-title">Война 1812 года</h2>
                 <p class="main-test-subtitle">Лично Маэстро написал это пук пук класс йоу 7 утра, я такой хуетой занимаюсь</p>
             </div>
         </a>
-        <a href="/" class="main-test-href">
+        <a href="/quiz" class="main-test-href">
             <div class="main-test test-flask">
                 <h2 class="main-test-title">Flask</h2>
                 <p class="main-test-subtitle">Фласк для хардкорных людей. Сможете ли вы пройти этот тест?</p>
             </div>
         </a>
-        <a href="/" class="main-test-href">
+        <a href="/quiz" class="main-test-href">
             <div class="main-test test-ithub">
                 <h2 class="main-test-title">История ITHub</h2>
                 <p class="main-test-subtitle">Давным-давно, в далёкой-далёкой галактике повстанцы создали ITHub</p>
             </div>
         </a>
-        <a href="/" class="main-test-href">
+        <a href="/quiz" class="main-test-href">
             <div class="main-test test-gamid">
                 <h2 class="main-test-title">Насколько ты знаешь Гамида</h2>
                 <p class="main-test-subtitle">Красивый, увлекательный, сексуальный и просто лучший преподаватель в ithub, насколько ты хорошо его знаешь?</p>
             </div>
         </a>
-    </div>
     <h1 class="title main-title">Тесты на тему истории</h1>
     <div class="main-container main-container-alt">
-        <a href="/" class="main-test-href">
+        <a href="/quiz" class="main-test-href">
             <div class="main-test test-war">
                 <h2 class="main-test-title">Война 1812 года</h2>
                 <p class="main-test-subtitle">Лично Маэстро написал это пук пук класс йоу 7 утра, я такой хуетой занимаюсь</p>
             </div>
         </a>
-        <a href="/" class="main-test-href">
+        <a href="/quiz" class="main-test-href">
             <div class="main-test test-ithub">
                 <h2 class="main-test-title">История ITHub</h2>
                 <p class="main-test-subtitle">Давным-давно, в далёкой-далёкой галактике повстанцы создали ITHub</p>
@@ -83,7 +95,7 @@ Quizer - викторина для всех
     </div>
     <h1 class="title main-title">Тесты на тему программирования</h1>
     <div class="main-container main-container-alt">
-        <a href="/" class="main-test-href">
+         <a href="/quiz" class="main-test-href">
             <div class="main-test test-flask">
                 <h2 class="main-test-title">Flask</h2>
                 <p class="main-test-subtitle">Фласк для хардкорных людей. Сможете ли вы пройти этот тест?</p>
@@ -92,12 +104,12 @@ Quizer - викторина для всех
     </div>
     <h1 class="title main-title">Тесты про Голивудских актёров</h1>
     <div class="main-container main-container-alt">
-        <a href="/" class="main-test-href">
+        <a href="/quiz" class="main-test-href">
             <div class="main-test test-gamid">
                 <h2 class="main-test-title">Насколько ты знаешь Гамида</h2>
                 <p class="main-test-subtitle">Красивый, увлекательный, сексуальный и просто лучший преподаватель в ithub, насколько ты хорошо его знаешь?</p>
-            </div>
+            </div> 
         </a>
-    </div>
+    </div> -->
 </main>
 {% endblock %}

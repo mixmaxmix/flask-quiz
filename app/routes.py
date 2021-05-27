@@ -1,15 +1,16 @@
-from wtforms import form
+from os import name
+from wtforms.widgets.core import Option
 from app import app, db
 from flask import Flask, render_template, url_for, request, redirect
 from werkzeug.urls import url_parse
 from app.models import User
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, Question, RegistrationForm, quizes, categs
 from flask_login import current_user, login_user, logout_user, login_required
 
 @app.route('/')
 @app.route('/dashboard')
 def index():
-    return render_template("index.html", user=current_user)
+    return render_template("index.html", user=current_user, quizes=quizes, categs=categs)
 
 @app.route('/reg', methods=['GET', 'POST'])
 def registration():
@@ -43,6 +44,29 @@ def login():
 @login_required
 def profile():
     return render_template("profile.html", user=current_user)
+
+@app.route('/quiz/<int:id>')
+@login_required
+def quiz(id):
+    return render_template("quiz.html", user=current_user, questions_list=quizes[id]['questions'], id=id)
+
+@app.route('/sumbitquiz/<int:id>', methods=['POST', 'GET'])
+@login_required
+def submit(id):
+    correct_count = 0
+    if request.method == 'POST':
+        for question in quizes[id]['questions']:
+            question_id = str(question.q_id)
+            print(request.get_data())
+            selected_option = request.form[question_id]
+            print(selected_option)
+            correct_option = question.get_correct_option()
+            if selected_option == correct_option:
+                correct_count = correct_count + 1
+
+        correct_count = str(correct_count)
+        print(correct_count)
+    return render_template("sumbitquiz.html", user=current_user, correct_count=correct_count)
 
 @app.route('/settings')
 @login_required
