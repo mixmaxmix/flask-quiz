@@ -7,4 +7,3 @@
 (сначала логин потом пароль)
 * test2 - test2
 * admin - 1
-* Van_Darkholme - 1
